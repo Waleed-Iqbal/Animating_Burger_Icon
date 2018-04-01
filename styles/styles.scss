@@ -1,12 +1,52 @@
-
-
-
-$color: #fefefe;
+$charcoal-gray: #222222;
+$burger-width: 100px;
+$cross-top: 12px;
+$cross-rotate: 45deg;
 
 body {
-    background-color: $color;
+    background-color: $charcoal-gray;
 }
 
-h1 {
-    color: #333333;
+#burger-container {
+    height: 300px;
+    color: #ffffff;
+    position: relative;
+    margin: 200px auto;
+    width: $burger-width;
+
+
+    &.open span:nth-child(1),
+    &.open span:nth-child(4) {
+        // top and bottom slide to left
+        width: 0;
+        opacity: 0;
+    }
+
+    &.open span:nth-child(2) {
+        // middle two will form a cross
+        top: $cross-top;
+        transform: rotate($cross-rotate);
+    }
+
+    &.open span:nth-child(3) {
+        // middle two will form a cross
+        top: -$cross-top;
+        transform: rotate(-$cross-rotate);        
+    }
+}
+
+#burger {
+    display: block;
+    cursor: pointer;
+
+    span {
+        top: 0;
+        height: 14px;
+        display: block;
+        position: relative;
+        margin-bottom: 10px; 
+        width: $burger-width;
+        background-color: #eee;
+        transition: all ease-in-out 0.4s;
+    }
 }
